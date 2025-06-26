@@ -32,7 +32,7 @@ jobs:
         with:
           use-public-rspm: true
 
-            - name: Update man
+      - name: Update man
         run: install.packages('devtools')
         shell: Rscript {0}      
       
