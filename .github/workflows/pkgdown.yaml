@@ -25,7 +25,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Update man
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+            - name: Update man
         run: install.packages('devtools')
         shell: Rscript {0}      
       
@@ -47,12 +54,7 @@ jobs:
             echo "No changes to commit."
           fi
 
-      - uses: r-lib/actions/setup-pandoc@v2
-
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          use-public-rspm: true
-
+      
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::pkgdown, local::.
